@@ -1,0 +1,27 @@
+
+name: Test and build
+
+on:
+  push:
+    branches: [ "master" ]
+
+
+permissions:
+  contents: read
+
+jobs:
+  test_and_build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12.5
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.12.5"
+    - name: Install dependencies
+      run: pip install requirements.txt
+
+    - name: Test with pytest
+      run: pytest main.py
