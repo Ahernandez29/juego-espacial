@@ -16,7 +16,8 @@ pygame.display.set_icon(icono)
 background = pygame.image.load('images/background.png')
 
 # Adding sound / Agregando sonido
-mixer.music.load('MusicaFondo.mp3')
+mixer.music.load('musics/MusicaFondo.mp3')
+mixer.music.set_volume(0.3)
 mixer.music.play(-1)
 
 # Variables del Jugador / Player Variables
@@ -109,6 +110,8 @@ while se_ejecuta:
             if evento.key == pygame.K_RIGHT:
                 jugador_x_cambio = 2
             if evento.key == pygame.K_SPACE:
+                sonido_bala = mixer.Sound('musics/disparo.mp3')
+                sonido_bala.play()
                 if not bala_visible:
                     bala_x = jugador_x
                     disparar_bala(bala_x, bala_y)
@@ -144,6 +147,8 @@ while se_ejecuta:
            # Collision / Colision
         colision = hay_colision(enemigo_x[e], enemigo_y[e], bala_x, bala_y)
         if colision:
+            sonido_colision = mixer.Sound('musics/Golpe.mp3')
+            sonido_colision.play()
             bala_y = 500
             bala_visible = False
             score += 1
