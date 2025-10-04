@@ -1,6 +1,7 @@
 import pygame
 import random
 import math
+from pygame import mixer
 
 # Inicializar pygame / Initiating pygame
 pygame.init()
@@ -13,6 +14,10 @@ pygame.display.set_caption("Ivasion Espacial")
 icono = pygame.image.load("images/ovni-alienigena.png")
 pygame.display.set_icon(icono)
 background = pygame.image.load('images/background.png')
+
+# Adding sound / Agregando sonido
+mixer.music.load('MusicaFondo.mp3')
+mixer.music.play(-1)
 
 # Variables del Jugador / Player Variables
 img_jugador = pygame.image.load('images/astronave.png')
