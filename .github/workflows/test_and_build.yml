@@ -22,6 +22,12 @@ jobs:
         python-version: "3.12.5"
     - name: Install dependencies
       run: pip install -r requirements.txt
+    - name: Check Python files compile
+      run: python -m py_compile $(git ls-files '*.py')
+    - name: Compileall (detect syntax errors)
+      run: python -m compileall .
+
+
 
     - name: Test with pytest
       run: pytest -q
