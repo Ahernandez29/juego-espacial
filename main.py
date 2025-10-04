@@ -107,6 +107,10 @@ while se_ejecuta:
         enemigo_y += enemigo_y_cambio
     
     # Bullet movement / Movimiento de la bala
+    if bala_y <= -64:
+        bala_y = 500
+        bala_visible = False
+        
     if bala_visible:
         disparar_bala(jugador_x, bala_y)
         bala_y -= bala_y_cambio
