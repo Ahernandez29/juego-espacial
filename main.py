@@ -123,7 +123,7 @@ while se_ejecuta:
     
     # Bullet movement / Movimiento de la bala
     if bala_y <= -64:
-        bala_y = 500
+        bala_y = 500m
         bala_visible = False
         
     if bala_visible:
