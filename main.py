@@ -46,7 +46,14 @@ bala_visible = False #Variable to know if the bullet is visible / Variable para 
 
 # Score / Puntaje
 score = 0
+fuente = pygame.font.Font('freesansbold.ttf', 32)
+texto_x = 10
+texto_y = 10
 
+# Function to show the score / Funcion para mostrar el puntaje
+def mostrar_puntaje(x,y):
+    texto = fuente.render(f'Score: {score}', True, (255, 255, 255)) 
+    pantalla.blit(texto, (x, y))
 
 # Player Function / Funcion del jugador
 def jugador(x, y):
@@ -91,7 +98,6 @@ while se_ejecuta:
         
         # Event of pressing a key / Evento de presionar una tecla
         if evento.type == pygame.KEYDOWN:
-            print("A key has been pressed / Una tecla ha sido presionada")
             
             if evento.key == pygame.K_LEFT:
                 jugador_x_cambio = -2
@@ -136,7 +142,7 @@ while se_ejecuta:
             bala_y = 500
             bala_visible = False
             score += 1
-            print(score)
+            
             
             enemigo_x[e] = random.randint(0,736) # Position of the Enemy / Posicion del enemigo
             enemigo_y[e] = random.randint(50,200) # Position of the Enemy / Posicion del enemigo
@@ -154,7 +160,7 @@ while se_ejecuta:
     
  
     jugador(jugador_x, jugador_y)
-  
+    mostrar_puntaje(texto_x, texto_y)
     
     # Updating the screen / Actualizando la pantalla
     pygame.display.update() # Actualizar la pantalla / Updating the Screen
