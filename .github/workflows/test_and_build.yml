@@ -28,6 +28,7 @@ jobs:
       run: python -m compileall .
 
 
-
+    - name: check linting
+      run: ruff check .
     - name: Test with pytest
       run: pytest -q
