@@ -32,7 +32,7 @@ img_bala = pygame.image.load('images/bala.png')
 bala_x = 0 # Position of the bullet / Posicion de la bala
 bala_y = 500 # Position of the bullet / Posicion del bala
 bala_x_cambio = 0 #Variable for the bullet movement / Variable para el movimiento del bala
-bala_y_cambio = 1 #Variable for the bullet movement / Variable para el movimiento del bala
+bala_y_cambio = 3 #Variable for the bullet movement / Variable para el movimiento del bala
 bala_visible = False #Variable to know if the bullet is visible / Variable para saber si la bala es visible
 
 
@@ -77,7 +77,9 @@ while se_ejecuta:
             if evento.key == pygame.K_RIGHT:
                 jugador_x_cambio = 2
             if evento.key == pygame.K_SPACE:
-                disparar_bala(jugador_x, bala_y)
+                if not bala_visible:
+                    bala_x = jugador_x
+                    disparar_bala(bala_x, bala_y)
         
         # Event Of Releasing a key / Evento de soltar una tecla
         if evento.type == pygame.KEYUP:
@@ -112,7 +114,7 @@ while se_ejecuta:
         bala_visible = False
         
     if bala_visible:
-        disparar_bala(jugador_x, bala_y)
+        disparar_bala(bala_x, bala_y)
         bala_y -= bala_y_cambio
     
     jugador(jugador_x, jugador_y)
